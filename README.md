@@ -65,8 +65,7 @@ task-manager-api
 │     └─ users.service.ts
 ├─ test
 │  ├─ app.e2e-spec.ts
+│  ├─ global-setup.ts
 │  └─ jest-e2e.json
 ├─ tsconfig.build.json
 └─ tsconfig.json
-
-```
