@@ -5,7 +5,9 @@ services:
     image: mysql:8.0
     container_name: taskmanager_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: taskuser
+      MYSQL_ROOT_PASSWORD: 1234123
+      MYSQL_PASSWORD: 12341234
       MYSQL_DATABASE: taskmanager
     ports:
       - "3306:3306"
@@ -17,11 +19,11 @@ services:
     image: postgres:15
     container_name: taskmanager_postgres
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+      POSTGRES_USER: taskuser
+      POSTGRES_PASSWORD: 12341234
       POSTGRES_DB: taskmanager
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped

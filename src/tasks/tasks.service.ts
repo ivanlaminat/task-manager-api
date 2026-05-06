@@ -12,7 +12,6 @@ export class TasksService {
   constructor(
     @InjectRepository(TaskEntity)
     private readonly taskRepository: Repository<TaskEntity>,
-    // Инжектим репозитории проектов и юзеров для проверки их существования
     @InjectRepository(ProjectEntity)
     private readonly projectRepository: Repository<ProjectEntity>,
     @InjectRepository(UserEntity)
@@ -48,7 +47,6 @@ export class TasksService {
   }
 
   async create(dto: CreateTaskDto): Promise<TaskEntity> {
-    // В реальном приложении здесь проверяем существование project и assignee
     const task = this.taskRepository.create(dto);
 
     if (dto.projectId) {
@@ -75,7 +73,6 @@ export class TasksService {
   async update(id: number, dto: UpdateTaskDto): Promise<TaskEntity> {
     const existingTask = await this.findOne(id);
 
-    // Обновляем только те поля, которые пришли
     const updatedTask = this.taskRepository.merge(existingTask, dto);
     return this.taskRepository.save(updatedTask);
   }
